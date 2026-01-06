@@ -1,8 +1,8 @@
-# COLLOSPOT - Smart WiFi Billing System
+# DenisTec - Smart WiFi Billing System
 
 **"Connect. Pay. Browse — Seamlessly."**
 
-COLLOSPOT is a comprehensive WiFi billing system designed specifically for Kenya, featuring M-Pesa integration, MikroTik router control, and a modern web-based admin dashboard.
+This is a comprehensive WiFi billing system designed specifically for Kenya, featuring M-Pesa integration, MikroTik router control, and a modern web-based admin dashboard.
 
 ## 🌟 Features
 
@@ -282,4 +282,4 @@ For support or inquiries:
 
 ---
 
-**COLLOSPOT** - Empowering Kenya's digital connectivity, one WiFi connection at a time. 🇰🇪
+- Empowering Kenya's digital connectivity, one WiFi connection at a time. 🇰🇪
