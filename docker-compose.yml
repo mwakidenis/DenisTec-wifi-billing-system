@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: collospot-db
+    environment:
+      POSTGRES_DB: collospot_db
+      POSTGRES_USER: collospot
+      POSTGRES_PASSWORD: collospot123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - collospot-network
+    restart: unless-stopped
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: collospot-backend
+    environment:
+      DATABASE_URL: "postgresql://collospot:collospot123@postgres:5432/collospot_db"
+      JWT_SECRET: "your-super-secret-jwt-key-change-in-production"
+      NODE_ENV: "production"
+      PORT: 5000
+      # Add your M-Pesa and other API credentials here
+      MPESA_CONSUMER_KEY: "your-mpesa-consumer-key"
+      MPESA_CONSUMER_SECRET: "your-mpesa-consumer-secret"
+      MPESA_SHORTCODE: "174379"
+      MPESA_PASSKEY: "your-mpesa-passkey"
+      MPESA_CALLBACK_URL: "https://yourdomain.com/api/public/payment/mpesa/callback"
+      MPESA_ENVIRONMENT: "sandbox"
+      MIKROTIK_HOST: "192.168.1.1"
+      MIKROTIK_USERNAME: "admin"
+      MIKROTIK_PASSWORD: "your-router-password"
+      AFRICASTALKING_USERNAME: "sandbox"
+      AFRICASTALKING_API_KEY: "your-africastalking-api-key"
+      FRONTEND_URL: "http://localhost:3000"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    networks:
+      - collospot-network
+    restart: unless-stopped
+    volumes:
+      - ./backend/logs:/app/logs
+
+  # Frontend (React)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: collospot-frontend
+    environment:
+      VITE_API_URL: "http://localhost:5000/api"
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - collospot-network
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: collospot-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - collospot-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  collospot-network:
+    driver: bridge

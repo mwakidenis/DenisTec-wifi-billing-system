@@ -1,0 +1,51 @@
+{
+  "name": "collospot-wifi-billing-system",
+  "version": "1.0.0",
+  "description": "COLLOSPOT - Smart WiFi Billing System for Kenya",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "npm run start:backend",
+    "start:backend": "cd backend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "db:setup": "cd backend && npm run db:generate && npm run db:push && npm run db:seed",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "keywords": [
+    "wifi",
+    "billing",
+    "mpesa",
+    "mikrotik",
+    "kenya",
+    "hotspot",
+    "captive-portal",
+    "react",
+    "nodejs",
+    "postgresql"
+  ],
+  "author": "COLLOSPOT Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/collospot-wifi-billing"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/collospot-wifi-billing/issues"
+  },
+  "homepage": "https://github.com/your-username/collospot-wifi-billing#readme"
+}
