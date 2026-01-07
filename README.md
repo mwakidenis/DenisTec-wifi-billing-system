@@ -281,5 +281,5 @@ For support or inquiries:
 - **Website**: https://mwakidenis.pages.dev/
 
 ---
-
+Made with ❤️ by Mwaki Denis
 - Empowering Kenya's digital connectivity, one WiFi connection at a time. 🇰🇪
