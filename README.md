@@ -276,9 +276,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Contact
 
 For support or inquiries:
-- **Email**: support@collospot.com
-- **Phone**: +254 700 000 000
-- **Website**: https://collospot.com
+- **Email**: support@mwakidenice.md@gmail.com
+- **Phone**: +254 798 750 585
+- **Website**: https://mwakidenis.pages.dev/
 
 ---
 
